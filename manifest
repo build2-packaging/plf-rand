@@ -1,12 +1,13 @@
 : 1
 name: plf-rand
-version: 0.1.0-a.0.z
-summary: plf-rand C++ library
-license: other: proprietary ; Not free/open source.
-description-file: README.md
-url: https://example.org/plf-rand
-email: mjklaim@gmail.com
-#build-error-email: mjklaim@gmail.com
+version: 1.1.0-a.0.z
+summary: A C++ 03/11/etc replacement for rand()/srand() that's ~700% faster and typically has better statistical distribution.
+license: zLib
+src-url: https://github.com/mattreecebentley/plf_rand.git
+doc-url: https://plflib.org/rand.htm
+email: mattreecebentley@gmail.com
+package-email: mjklaim@gmail.com
+build-email: mjklaim@gmail.com
+
 depends: * build2 >= 0.13.0
 depends: * bpkg >= 0.13.0
-#depends: libhello ^1.0.0
