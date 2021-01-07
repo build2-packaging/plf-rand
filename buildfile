@@ -35,5 +35,13 @@ lib{rand}:
 ## Test/Benchmark
 
 exe{bench} : $src_upstream/cxx{**} lib{rand}
-exe{bench} : test = true
+exe{bench} :
+{
+  test = true
+}
 
+# Workaround warnings.
+if($cxx.id != "msvc")
+{
+  cc.poptions = -Wno-unused-variable
+}
