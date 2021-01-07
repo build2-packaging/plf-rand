@@ -39,9 +39,3 @@ exe{bench} :
 {
   test = true
 }
-
-# Workaround warnings.
-if($cxx.id != "msvc")
-{
-  cc.poptions = -Wno-unused-variable
-}
