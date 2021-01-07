@@ -1,37 +1,27 @@
 intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
-#import impl_libs += libhello%lib{hello}
+import intf_libs += plf-nanotimer%lib{nanotimer}
 
-./: lib{plf-rand} doc{README.md} manifest
+src_upstream = $src_root/upstream
 
-lib{plf-rand}: {hxx ixx txx cxx}{**} $impl_libs $intf_libs
+./ : $src_upstream/doc{README.md} manifest
+
+./ : lib{rand} exe{bench}
+
+lib{rand} : $src_upstream/hxx{**} $impl_libs $intf_libs
+lib{rand} : bin.lib = binless
 
 # Build options.
 #
-cxx.poptions =+ "-I$out_root" "-I$src_root"
-
-obja{*}: cxx.poptions += -DPLF_RAND_STATIC_BUILD
-objs{*}: cxx.poptions += -DPLF_RAND_SHARED_BUILD
+cxx.poptions =+ "-I$out_root/upstream" "-I$src_root/upstream"
 
 # Export options.
 #
-lib{plf-rand}:
+lib{rand}:
 {
-  cxx.export.poptions = "-I$out_root" "-I$src_root"
+  cxx.export.poptions = "-I$out_root/upstream" "-I$src_root/upstream"
   cxx.export.libs = $intf_libs
 }
-
-liba{plf-rand}: cxx.export.poptions += -DPLF_RAND_STATIC
-libs{plf-rand}: cxx.export.poptions += -DPLF_RAND_SHARED
-
-# For pre-releases use the complete version to make sure they cannot be used
-# in place of another pre-release or the final version. See the version module
-# for details on the version.* variable values.
-#
-if $version.pre_release
-  lib{plf-rand}: bin.lib.version = @"-$version.project_id"
-else
-  lib{plf-rand}: bin.lib.version = @"-$version.major.$version.minor"
 
 # Install recreating subdirectories.
 #
@@ -40,3 +30,10 @@ else
   install         = include/
   install.subdirs = true
 }
+
+
+## Test/Benchmark
+
+exe{bench} : $src_upstream/cxx{**} lib{rand}
+exe{bench} : test = true
+

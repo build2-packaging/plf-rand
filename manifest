@@ -9,5 +9,9 @@ email: mattreecebentley@gmail.com
 package-email: mjklaim@gmail.com
 build-email: mjklaim@gmail.com
 
+requires: c++ >= 17
+
 depends: * build2 >= 0.13.0
 depends: * bpkg >= 0.13.0
+
+depends: plf-nanotimer ^1.0.0
