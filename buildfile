@@ -9,7 +9,6 @@ src_upstream = $src_root/upstream
 ./ : lib{rand} exe{bench}
 
 lib{rand} : $src_upstream/hxx{**} $impl_libs $intf_libs
-lib{rand} : bin.lib = binless
 
 # Build options.
 #
@@ -28,7 +27,7 @@ lib{rand}:
 {hxx ixx txx}{*}:
 {
   install         = include/
-  install.subdirs = true
+  install.subdirs = false
 }
 
 
@@ -38,4 +37,5 @@ exe{bench} : $src_upstream/cxx{**} lib{rand}
 exe{bench} :
 {
   test = true
+  install = false
 }
