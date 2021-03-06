@@ -1,6 +1,6 @@
 : 1
 name: plf-rand
-version: 1.1.0+1
+version: 1.2.0
 summary: A C++ 03/11/etc replacement for rand()/srand() that's ~700% faster and typically has better statistical distribution.
 license: zLib
 src-url: https://github.com/mattreecebentley/plf_rand.git
