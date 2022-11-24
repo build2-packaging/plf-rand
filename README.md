@@ -7,7 +7,7 @@ We use a git submodule targetting a specific version of the library for each pac
 PLF Rand
 ----------
 
- - PLF Colony: https://plflib.org/rand.htm
+ - PLF Rand: https://plflib.org/rand.htm
     - Also contain the change history at the end of the page.
  - Repository: https://github.com/mattreecebentley/plf_rand/
 
