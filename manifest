@@ -15,3 +15,5 @@ depends: * build2 >= 0.13.0
 depends: * bpkg >= 0.13.0
 
 depends: plf-nanotimer ^1.0.0
+
+builds: all : -wasm ; Emscripten is not supported yet
